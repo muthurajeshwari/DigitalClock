@@ -1,38 +1,63 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* General styling */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  /* background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); */
+  background-color: black;
+  color: #ffffff;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+/* Container for the clock */
+
+/* Header styling */
+h1 {
+  font-size: 70px;
+  margin: 0;
+  color: #00ff99;
+  text-shadow: 0 0 5px rgba(0, 255, 153, 0.8);
+  animation: slideIn 1s ease-out;
 }
 
-@keyframes App-logo-spin {
+/* Keyframes for slideIn animation */
+@keyframes slideIn {
   from {
-    transform: rotate(0deg);
+    transform: translateX(-100%);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Time and date styling */
+.time {
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #00ccff;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.date {
+  font-size: 1.2em;
+  margin: 0;
+  color: #bbbbbb;
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* Keyframes for fadeIn animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

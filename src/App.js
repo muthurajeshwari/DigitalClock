@@ -1,24 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState,useEffect} from "react";
 
 function App() {
+  const [time,setTime]=useState(new Date());
+  useEffect(()=>{
+    const timer=setInterval(()=> {
+      setTime(new Date());
+    },1000);
+
+    return ()=> clearInterval(timer);
+  },[]);
+
+  const format=(hour)=>{
+    return hour===0 ? 12 : hour>12 ? hour-12 :hour;
+  }
+  const formatHour=(num)=>{
+    return num<10 ? `0${num}` : num;
+  }
+
+  const formatDate=(date)=>{
+    const options= {weekday:"long" ,year:"numeric" ,month:"long" , day:"numeric"};
+      return date.toLocaleDateString(undefined,options);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+   
+   <div className='digital-clock'></div>
+   <h1>Digital Clock</h1>
+   <div className='time'>{formatHour(format(time.getHours()))} : 
+    {formatHour(time.getMinutes())}:
+    {formatHour(time.getSeconds())}
+    {time.getHours()>=12 ? " PM" : "AM"}
+   </div>
+   <div className='date'>{formatDate(time)}</div>
+    </>
   );
 }
 
